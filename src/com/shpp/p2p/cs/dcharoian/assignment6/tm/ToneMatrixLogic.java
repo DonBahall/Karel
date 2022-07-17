@@ -14,6 +14,7 @@ public class ToneMatrixLogic {
     public static double[] matrixToMusic(boolean[][] toneMatrix, int column, double[][] samples) {
         double[] result = new double[ToneMatrixConstants.sampleSize()];
         double findAbs, maxElement;
+        //variable to check if any cell is on
         boolean yesNot = false;
         for (int i = 0; i < toneMatrix[column].length; i++) {
             if (toneMatrix[i][column]) {
@@ -23,18 +24,21 @@ public class ToneMatrixLogic {
                 }
             }
         }
+        //if nothing is playing return array of zero
         if (!yesNot) {
             return result;
         }
         maxElement = 0;
-        double temp_int;
+        double tempInt;
+        //find the most intensity
         for (double v : result) {
-            temp_int = v;
-            findAbs = Math.abs(temp_int);
-            if (findAbs >= maxElement) {
+            tempInt = v;
+            findAbs = Math.abs(tempInt);
+            if (findAbs > maxElement) {
                 maxElement = findAbs;
             }
         }
+        //optimize sound
         for (int i = 0; i < result.length; i++) {
             result[i] = result[i] / maxElement;
         }

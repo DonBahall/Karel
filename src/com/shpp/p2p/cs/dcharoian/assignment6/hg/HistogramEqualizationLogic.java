@@ -76,7 +76,7 @@ public class HistogramEqualizationLogic {
      */
     public static int[][] equalize(int[][] luminances) {
         int total = totalPixelsIn(luminances);
-        int[] it = histogramFor(luminances);
+         int[] it = histogramFor(luminances);
         int[] cumulative = cumulativeSumFor(it);
         for (int k = 0; k < luminances.length; k++) {
             for (int j = 0; j < luminances[k].length; j++) {

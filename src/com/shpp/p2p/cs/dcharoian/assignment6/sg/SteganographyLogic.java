@@ -16,6 +16,7 @@ public class SteganographyLogic {
      * @return The hidden message, expressed as a boolean array.
      */
     public static boolean[][] findMessage(GImage source) {
+        //get image pixels
         int[][] pixels = source.getPixelArray();
         int numRows = pixels.length;
         int numCols = pixels[0].length;
@@ -55,8 +56,6 @@ public class SteganographyLogic {
         int numCols = pixels[0].length;
         for (int row = 0; row < numRows; ++row) {
             for (int col = 0; col < numCols; ++col) {
-                int green = GImage.getGreen(pixels[row][col]);
-                int blue = GImage.getBlue(pixels[row][col]);
                 int red = GImage.getRed(pixels[row][col]);
                 if (!message[row][col]) {
                     if (red % 2 != 0) {
@@ -69,7 +68,7 @@ public class SteganographyLogic {
                         red += 1;
                     }
                 }
-                pixels[row][col] = GImage.createRGBPixel(red, green, blue);
+                pixels[row][col] = GImage.createRGBPixel(red, GImage.getGreen(pixels[row][col]), GImage.getBlue(pixels[row][col]));
             }
         }
         return new GImage(pixels);

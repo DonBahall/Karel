@@ -1,7 +1,5 @@
 package com.shpp.p2p.cs.dcharoian.assignment5;
-
 import com.shpp.cs.a.console.TextProgram;
-
 public class Assignment5Part2 extends TextProgram {
     public void run() {
         /* Sit in a loop, reading numbers and adding them. */
@@ -12,7 +10,6 @@ public class Assignment5Part2 extends TextProgram {
             println();
         }
     }
-
     /**
      * Given two string representations of nonnegative integers, adds the
      * numbers represented by those strings and returns the result.
